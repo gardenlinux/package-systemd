@@ -1,0 +1,48 @@
+Subject: Adopt to Garden Linux defaults
+
+--- org/debian/rules	2021-10-17 21:36:55.100237147 +0000
++++ new/debian/rules	2021-10-17 21:38:35.618910510 +0000
+@@ -61,23 +61,23 @@
+ 	-Ddefault-kill-user-processes=false \
+ 	-Ddefault-hierarchy=unified \
+ 	-Ddefault-dnssec=no \
+-	-Dpamconfdir=no \
++	-Dpamconfdir=/etc/pam.d \
+ 	-Dpamlibdir=/lib/$(DEB_HOST_MULTIARCH)/security \
+ 	-Drpmmacrosdir=no \
+-	-Dqrencode=false \
++	-Dqrencode=true \
+ 	-Dvconsole=false \
+ 	-Dfirstboot=false \
+ 	-Dxkbcommon=false \
+ 	-Dwheel-group=false \
+-	-Drepart=false \
+-	-Duserdb=false \
+	-Dhomed=false \
++	-Drepart=true \
++	-Duserdb=true \
+ 	-Dlibfido2=false \
+-	-Dfdisk=false \
+-	-Dpwquality=false \
++	-Dfdisk=true \
++	-Dpwquality=true \
+ 	-Dp11kit=false \
+-	-Dtpm2=false \
+-	-Doomd=false \
++	-Dtpm2=true \
++	-Doomd=true \
+ 	-Dsysext=true \
+ 	-Dnscd=true \
+ 	-Dntp-servers="$(DEFAULT_NTP_SERVERS)" \
+--- org/debian/control	2021-10-17 21:40:22.989765859 +0000
++++ new/debian/control	2021-10-17 21:41:45.743966420 +0000
+@@ -60,6 +60,9 @@
+                iproute2 <!nocheck>,
+                zstd <!nocheck>,
+                gawk <!nocheck>,
++               libfdisk-dev,
++               libpwquality-dev, libqrencode-dev, libtss2-dev, libssl-dev, libbpf-dev,
++               bpftool:native, llvm:native, clang:native,
+ 
+ Package: systemd
+ Architecture: linux-any
