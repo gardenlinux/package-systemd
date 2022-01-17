@@ -2,7 +2,7 @@ Subject: Adopt to Garden Linux defaults
 
 --- org/debian/rules	2021-10-17 21:36:55.100237147 +0000
 +++ new/debian/rules	2021-10-17 21:38:35.618910510 +0000
-@@ -61,23 +61,23 @@
+@@ -57,17 +57,17 @@ CONFFLAGS = \
  	-Ddefault-kill-user-processes=false \
  	-Ddefault-hierarchy=unified \
  	-Ddefault-dnssec=no \
@@ -16,33 +16,22 @@ Subject: Adopt to Garden Linux defaults
  	-Dfirstboot=false \
  	-Dxkbcommon=false \
  	-Dwheel-group=false \
--	-Drepart=false \
 -	-Duserdb=false \
-	-Dhomed=false \
-+	-Drepart=true \
 +	-Duserdb=true \
- 	-Dlibfido2=false \
--	-Dfdisk=false \
+ 	-Dhomed=false \
 -	-Dpwquality=false \
-+	-Dfdisk=true \
 +	-Dpwquality=true \
  	-Dp11kit=false \
--	-Dtpm2=false \
--	-Doomd=false \
-+	-Dtpm2=true \
-+	-Doomd=true \
- 	-Dsysext=true \
- 	-Dnscd=true \
- 	-Dntp-servers="$(DEFAULT_NTP_SERVERS)" \
+ 	-Doomd=true \
+ 	-Durlify=false \
 --- org/debian/control	2021-10-17 21:40:22.989765859 +0000
 +++ new/debian/control	2021-10-17 21:41:45.743966420 +0000
-@@ -60,6 +60,9 @@
-                iproute2 <!nocheck>,
+@@ -65,6 +65,8 @@ Build-Depends: debhelper-compat (= 13),
                 zstd <!nocheck>,
                 gawk <!nocheck>,
-+               libfdisk-dev,
-+               libpwquality-dev, libqrencode-dev, libtss2-dev, libssl-dev, libbpf-dev,
-+               bpftool:native, llvm:native, clang:native,
- 
+                fdisk <!nocheck>,
++               libpwquality-dev,
++               libqrencode-dev,
+
  Package: systemd
  Architecture: linux-any
