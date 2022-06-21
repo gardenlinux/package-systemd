@@ -1,8 +1,8 @@
 Subject: Adopt to Garden Linux defaults
 
---- org/debian/rules	2021-10-17 21:36:55.100237147 +0000
-+++ new/debian/rules	2021-10-17 21:38:35.618910510 +0000
-@@ -57,17 +57,17 @@ CONFFLAGS = \
+--- org/debian/rules
++++ new/debian/rules
+@@ -58,16 +58,16 @@
  	-Ddefault-kill-user-processes=false \
  	-Ddefault-hierarchy=unified \
  	-Ddefault-dnssec=no \
@@ -14,24 +14,22 @@ Subject: Adopt to Garden Linux defaults
 +	-Dqrencode=true \
  	-Dvconsole=false \
  	-Dfirstboot=false \
+ 	-Dsysupdate=false \
  	-Dxkbcommon=false \
  	-Dwheel-group=false \
--	-Duserdb=false \
-+	-Duserdb=true \
- 	-Dhomed=false \
 -	-Dpwquality=false \
 +	-Dpwquality=true \
  	-Dp11kit=false \
  	-Doomd=true \
- 	-Durlify=false \
---- org/debian/control	2021-10-17 21:40:22.989765859 +0000
-+++ new/debian/control	2021-10-17 21:41:45.743966420 +0000
-@@ -65,6 +65,8 @@ Build-Depends: debhelper-compat (= 13),
+ 	-Durlify=true \
+--- org/debian/control
++++ org/debian/control
+@@ -66,6 +66,8 @@
                 zstd <!nocheck>,
                 gawk <!nocheck>,
                 fdisk <!nocheck>,
 +               libpwquality-dev,
 +               libqrencode-dev,
-
+ 
  Package: systemd
  Architecture: linux-any
