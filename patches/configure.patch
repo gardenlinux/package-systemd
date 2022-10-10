@@ -13,7 +13,7 @@ Subject: Adopt to Garden Linux defaults
 -	-Dqrencode=false \
 +	-Dqrencode=true \
  	-Dvconsole=false \
- 	-Dfirstboot=false \
+ 	-Dfirstboot=true \
  	-Dsysupdate=false \
  	-Dxkbcommon=false \
  	-Dwheel-group=false \
@@ -24,12 +24,12 @@ Subject: Adopt to Garden Linux defaults
  	-Durlify=true \
 --- org/debian/control
 +++ org/debian/control
-@@ -66,6 +66,8 @@
+@@ -67,6 +67,8 @@
                 zstd <!nocheck>,
                 gawk <!nocheck>,
                 fdisk <!nocheck>,
 +               libpwquality-dev,
-+               libqrencode-dev,
++               libqrencode-dev
  
  Package: systemd
  Architecture: linux-any
