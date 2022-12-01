@@ -1,8 +1,7 @@
 Subject: Adopt to Garden Linux defaults
 
---- org/debian/rules
-+++ new/debian/rules
-@@ -58,16 +58,16 @@
++++ a/debian/rules
+@@ -58,7 +58,7 @@
  	-Ddefault-kill-user-processes=false \
  	-Ddefault-hierarchy=unified \
  	-Ddefault-dnssec=no \
@@ -10,10 +9,8 @@ Subject: Adopt to Garden Linux defaults
 +	-Dpamconfdir=/etc/pam.d \
  	-Dpamlibdir=/lib/$(DEB_HOST_MULTIARCH)/security \
  	-Drpmmacrosdir=no \
--	-Dqrencode=false \
-+	-Dqrencode=true \
  	-Dvconsole=false \
- 	-Dfirstboot=true \
+@@ -66,7 +66,7 @@
  	-Dsysupdate=false \
  	-Dxkbcommon=false \
  	-Dwheel-group=false \
@@ -22,9 +19,17 @@ Subject: Adopt to Garden Linux defaults
  	-Dp11kit=false \
  	-Doomd=true \
  	-Durlify=true \
---- org/debian/control
-+++ org/debian/control
-@@ -67,6 +67,8 @@
+@@ -138,7 +138,7 @@
+ 	-Dopenssl=false \
+ 	-Dlibfido2=false \
+ 	-Dtpm2=false \
+-	-Dqrencode=false \
++	-Dqrencode=true \
+ 	-Dhomed=false \
+ 	-Duserdb=false \
+ 	-Dpcre2=false
++++ a/debian/control
+@@ -70,6 +70,8 @@
                 zstd <!nocheck>,
                 gawk <!nocheck>,
                 fdisk <!nocheck>,
