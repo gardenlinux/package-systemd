@@ -16,20 +16,20 @@ Subject: Adopt to Garden Linux defaults
  	-Dwheel-group=false \
 -	-Dpwquality=false \
 +	-Dpwquality=true \
- 	-Dp11kit=false \
  	-Doomd=true \
  	-Durlify=true \
-@@ -138,7 +138,7 @@
- 	-Dopenssl=false \
+ 	-Dgnutls=false \
+@@ -139,7 +139,7 @@
  	-Dlibfido2=false \
  	-Dtpm2=false \
+ 	-Dp11kit=false \
 -	-Dqrencode=false \
 +	-Dqrencode=true \
  	-Dhomed=false \
  	-Duserdb=false \
  	-Dpcre2=false
 +++ a/debian/control
-@@ -70,6 +70,8 @@
+@@ -72,6 +72,8 @@
                 zstd <!nocheck>,
                 gawk <!nocheck>,
                 fdisk <!nocheck>,
