@@ -4,5 +4,6 @@ include:
 
 variables:
   SOURCE_NAME: systemd
+  SOURCE_DIST: experimental
   DEB_BUILD_OPTIONS: nocheck noudeb terse
   DEB_BUILD_PROFILES: nocheck noudeb
