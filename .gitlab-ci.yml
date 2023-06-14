@@ -7,3 +7,4 @@ variables:
   SOURCE_DIST: experimental
   DEB_BUILD_OPTIONS: nocheck noudeb terse
   DEB_BUILD_PROFILES: nocheck noudeb
+  BUILD_ARCH_ALL: 'true'
