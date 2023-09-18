@@ -1,0 +1,11 @@
+--- a/debian/extra/kernel-install.d/85-initrd.install
++++ b/debian/extra/kernel-install.d/85-initrd.install
+@@ -18,7 +18,7 @@
+ 
+ if [ -e "$INITRD_SRC" ]; then
+     [ "$KERNEL_INSTALL_VERBOSE" -gt 0 ] && echo "Installing '$INITRD_SRC'"
+-    ln -fs "$INITRD_SRC" "$KERNEL_INSTALL_STAGING_AREA"
++    ln -fs "$INITRD_SRC" "$KERNEL_INSTALL_STAGING_AREA"/initrd
+ else
+     echo "$INITRD_SRC does not exist, not installing an initrd"
+ fi
