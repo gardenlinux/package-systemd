@@ -4,7 +4,7 @@ include:
 
 variables:
   SOURCE_NAME: systemd
-  SOURCE_DIST: testing
+  SOURCE_DIST: unstable
   DEB_BUILD_OPTIONS: nocheck noudeb terse
   DEB_BUILD_PROFILES: nocheck noudeb
   BUILD_ARCH_ALL: 'true'
