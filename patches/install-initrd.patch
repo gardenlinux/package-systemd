@@ -1,7 +1,7 @@
---- a/debian/extra/kernel-install.d/85-initrd.install
-+++ b/debian/extra/kernel-install.d/85-initrd.install
+--- a/debian/extra/kernel-install.d/50-initrd.install	2024-01-31 00:03:23.643225600 +0000
++++ c/debian/extra/kernel-install.d/50-initrd.install	2024-01-31 00:09:21.385423088 +0000
 @@ -18,7 +18,7 @@
- 
+
  if [ -e "$INITRD_SRC" ]; then
      [ "$KERNEL_INSTALL_VERBOSE" -gt 0 ] && echo "Installing '$INITRD_SRC'"
 -    ln -fs "$INITRD_SRC" "$KERNEL_INSTALL_STAGING_AREA"

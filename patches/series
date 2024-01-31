@@ -1,2 +1,3 @@
 configure.patch
 install-initrd.patch
+install_pam_systemd_user.patch
