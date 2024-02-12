@@ -5,6 +5,6 @@ on:
     - cron: '0 0 * * *'
 jobs:
   build:
-    uses: gardenlinux/package-build/.github/workflows/build.yml@main
+    uses: gardenlinux/package-build/.github/workflows/build.yml@arm-runner
     with:
       release: ${{ github.ref == 'refs/heads/main' }}
