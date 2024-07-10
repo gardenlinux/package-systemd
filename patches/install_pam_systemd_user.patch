@@ -6,6 +6,6 @@ diff -Naur a/debian/systemd.install b/debian/systemd.install
  etc/init.d/
  etc/kernel/install.d/
 +etc/pam.d/systemd-user
- <pkg.systemd.upstream> etc/ssh/ssh_config.d/20-systemd-ssh-proxy.conf
+ etc/ssh/ssh_config.d/20-systemd-ssh-proxy.conf
  etc/systemd/journald.conf
  etc/systemd/logind.conf
