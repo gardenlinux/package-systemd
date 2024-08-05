@@ -1,2 +1,2 @@
-apt_src systemd
+git_src --branch debian/256.4-2 https://salsa.debian.org/systemd-team/systemd/
 apply_patches
