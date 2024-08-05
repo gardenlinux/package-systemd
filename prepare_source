@@ -1,2 +1,2 @@
-git_src --branch debian/256.4-1 https://salsa.debian.org/systemd-team/systemd/
+git_src --branch debian/256.2-1 https://salsa.debian.org/systemd-team/systemd/
 apply_patches
