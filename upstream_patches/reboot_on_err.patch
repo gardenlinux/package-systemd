@@ -1,0 +1,83 @@
+commit ad045d78d5d8bfe1dce9113309b3f5de3673200f
+Author: nkraetzschmar <9020053+nkraetzschmar@users.noreply.github.com>
+Date:   Tue Nov 12 23:40:24 2024 +0100
+
+    boot: add reboot-on-error config option
+
+    Enabling this option will cause the system to reboot in case the selected
+    entry fails to load.
+
+diff --git a/man/loader.conf.xml b/man/loader.conf.xml
+index 068aa3b54a..0110b60ef3 100644
+--- a/man/loader.conf.xml
++++ b/man/loader.conf.xml
+@@ -399,6 +399,14 @@ sbvarsign --attr "${attr}" --key KEK.key --cert KEK.pem --output db.auth db db.e
+
+         <xi:include href="version-info.xml" xpointer="v251"/></listitem>
+       </varlistentry>
++
++      <varlistentry>
++        <term>reboot-on-error</term>
++
++        <listitem><para>Takes a boolean argument. Enable or disable (the default) auto reboot in case the selected entry fails to start.</para>
++
++        <xi:include href="version-info.xml" xpointer="v257"/></listitem>
++      </varlistentry>
+     </variablelist>
+   </refsect1>
+
+diff --git a/src/boot/efi/boot.c b/src/boot/efi/boot.c
+index ecbb4e0509..25e2b5df34 100644
+--- a/src/boot/efi/boot.c
++++ b/src/boot/efi/boot.c
+@@ -91,6 +91,7 @@ typedef struct {
+         bool auto_poweroff;
+         bool auto_reboot;
+         bool reboot_for_bitlocker;
++        bool reboot_on_err;
+         secure_boot_enroll secure_boot_enroll;
+         bool force_menu;
+         bool use_saved_entry;
+@@ -532,6 +533,7 @@ static void print_status(Config *config, char16_t *loaded_image_path) {
+         printf("           auto-reboot: %ls\n", yes_no(config->auto_reboot));
+         printf("                  beep: %ls\n", yes_no(config->beep));
+         printf("  reboot-for-bitlocker: %ls\n", yes_no(config->reboot_for_bitlocker));
++        printf("       reboot-on-error: %ls\n", yes_no(config->reboot_on_err));
+
+         switch (config->secure_boot_enroll) {
+         case ENROLL_OFF:
+@@ -1258,6 +1260,10 @@ static void config_defaults_load_from_file(Config *config, char *content) {
+                                 log_error("Error parsing 'reboot-for-bitlocker' config option, ignoring: %s",
+                                           value);
+
++                } else if (streq8(key, "reboot-on-error")) {
++                        if (!parse_boolean(value, &config->reboot_on_err))
++                                log_error("Error parsing 'reboot-on-error' config option, ignoring: %s", value);
++
+                 } else if (streq8(key, "secure-boot-enroll")) {
+                         if (streq8(value, "manual"))
+                                 config->secure_boot_enroll = ENROLL_MANUAL;
+@@ -1287,6 +1293,7 @@ static void config_defaults_load_from_file(Config *config, char *content) {
+                                 }
+                                 config->console_mode = u;
+                         }
++
+                 }
+ }
+
+@@ -2782,8 +2789,13 @@ static EFI_STATUS run(EFI_HANDLE image) {
+                 (void) process_random_seed(root_dir);
+
+                 err = image_start(image, entry);
+-                if (err != EFI_SUCCESS)
+-                        return err;
++                if (err != EFI_SUCCESS) {
++                        log_error_status(err, "Error starting image: %m");
++                        if (config.reboot_on_err)
++                                reboot_system();
++                        else
++                                return err;
++                }
+
+                 menu = true;
+                 config.timeout_sec = 0;
