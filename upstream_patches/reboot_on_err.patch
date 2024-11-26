@@ -26,10 +26,10 @@ index 068aa3b54a..0110b60ef3 100644
      </variablelist>
    </refsect1>
 
-diff --git a/src/boot/efi/boot.c b/src/boot/efi/boot.c
+diff --git a/src/boot/boot.c b/src/boot/boot.c
 index ecbb4e0509..25e2b5df34 100644
---- a/src/boot/efi/boot.c
-+++ b/src/boot/efi/boot.c
+--- a/src/boot/boot.c
++++ b/src/boot/boot.c
 @@ -91,6 +91,7 @@ typedef struct {
          bool auto_poweroff;
          bool auto_reboot;
