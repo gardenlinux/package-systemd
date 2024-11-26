@@ -1,4 +1,6 @@
 diff -Naur a/debian/systemd.install b/debian/systemd.install
+--- a/debian/systemd.install
++++ b/debian/systemd.install
 @@ -3,6 +3,7 @@
  etc/credstore/
  etc/credstore.encrypted/
