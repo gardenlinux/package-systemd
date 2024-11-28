@@ -1,3 +1,10 @@
-apt_src systemd
-import_upstream_patches
+git_src --branch v256.8 https://github.com/systemd/systemd.git
+tmp_deb=$(mktemp -d)
+# TODO: create a import_upstream_patches/debian_git, similar to git_src
+git clone --depth 1 --recurse-submodules -b "debian/256.7-3" https://salsa.debian.org/systemd-team/systemd.git "$tmp_deb"
+cp -r "${tmp_deb}/debian" "${dir}/src/"
+rm -rf "${tmp_deb}"
 apply_patches
+
+version="256.8-0"
+message="Update to 256.8-0"
