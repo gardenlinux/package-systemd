@@ -1,0 +1,10 @@
+--- a/debian/systemd.install
++++ b/debian/systemd.install
+@@ -448,6 +448,7 @@
+ usr/share/bash-completion/completions/systemctl
+ usr/share/bash-completion/completions/systemd-analyze
+ usr/share/bash-completion/completions/systemd-cat
++usr/share/bash-completion/completions/systemd-creds
+ usr/share/bash-completion/completions/systemd-cgls
+ usr/share/bash-completion/completions/systemd-cgtop
+ usr/share/bash-completion/completions/systemd-confext
