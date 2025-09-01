@@ -1,3 +1,2 @@
 apt_src systemd
-import_upstream_patches
 apply_patches
