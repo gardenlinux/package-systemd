@@ -1,0 +1,3 @@
+if apt-cache policy systemd | grep Candidate: | awk '{ print $2 }' | grep -E '~rc[0-9]+'; then
+	touch $dir/skip_everything
+fi
