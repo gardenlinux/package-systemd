@@ -1,2 +1,17 @@
-apt_src systemd
+version="259.5-1"
+version_suffix=gl0
+git_src_orig_commit="b3d8fc43e9cb531d958c17ef2cd93b374bc14e8a" # v259.5
+salsa_repo_commit="0f1a56cf10246d00e6e0602762e59728e727ac4e"   # 259.1-1
+
+git_src_commit ${git_src_orig_commit} https://github.com/systemd/systemd.git
+
+systemd_salsa=$(mktemp -d)
+git clone --depth 1 https://salsa.debian.org/systemd-team/systemd.git $systemd_salsa
+pushd $systemd_salsa
+git sparse-checkout set debian
+git fetch origin $salsa_repo_commit
+git checkout $salsa_repo_commit
+cp -r $systemd_salsa/debian $dir/src/
+popd
+
 apply_patches
