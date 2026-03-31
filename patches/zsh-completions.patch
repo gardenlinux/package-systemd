@@ -1,0 +1,16 @@
+--- a/debian/systemd.install     2026-03-31 12:20:54.818848008 +0000
++++ b/debian/systemd.install     2026-03-31 12:21:49.928391837 +0000
+@@ -551,11 +551,13 @@
+ usr/share/zsh/vendor-completions/_systemd
+ usr/share/zsh/vendor-completions/_systemd-analyze
+ usr/share/zsh/vendor-completions/_systemd-delta
++usr/share/zsh/vendor-completions/_systemd-id128
+ usr/share/zsh/vendor-completions/_systemd-inhibit
+ usr/share/zsh/vendor-completions/_systemd-path
+ usr/share/zsh/vendor-completions/_systemd-run
+ usr/share/zsh/vendor-completions/_systemd-tmpfiles
+ usr/share/zsh/vendor-completions/_timedatectl
++usr/share/zsh/vendor-completions/_userdbctl
+ usr/share/zsh/vendor-completions/_varlinkctl
+ <!pkg.systemd.upstream> var/lib/systemd/
+ ../extra/init-functions.d usr/lib/lsb/
