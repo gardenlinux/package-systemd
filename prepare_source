@@ -1,4 +1,16 @@
-git_src -b debian/257.8-1_deb13u1 https://salsa.debian.org/systemd-team/systemd.git
+apt-get install -y --no-install-recommends curl ca-certificates
+
+curl -sSLf https://snapshot.debian.org/archive/debian/20260503T150742Z/pool/main/s/systemd/systemd_257.13.orig.tar.gz \
+| gunzip \
+| tee "$dir/orig.tar" \
+| tar --extract --strip-components 1 --directory "$dir/src"
+
+mkdir "$dir/src/debian"
+
+curl -sSLf https://snapshot.debian.org/archive/debian/20260503T150742Z/pool/main/s/systemd/systemd_257.13-1~deb13u1.debian.tar.xz \
+| xz -d \
+| tar --extract --strip-components 1 --directory "$dir/src/debian"
+
 import_upstream_patches
 apply_patches
 version_suffix=gl0~bp1877
