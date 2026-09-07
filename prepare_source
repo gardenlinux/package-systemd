@@ -1,5 +1,5 @@
-version="259.7-3"
-version_suffix=gl1+bp2150
+version="259.8-1"
+version_suffix=gl0+bp2150
 git_src_orig_commit="6576434737de042cdd0f6e62f34f04818306c73b" # v259.8
 salsa_repo_commit="0f1a56cf10246d00e6e0602762e59728e727ac4e"   # 259.1-1
 
