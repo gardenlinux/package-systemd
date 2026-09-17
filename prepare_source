@@ -1,6 +1,6 @@
-version="259.8-1"
+version="259.9-1"
 version_suffix=gl0+bp2150
-git_src_orig_commit="6576434737de042cdd0f6e62f34f04818306c73b" # v259.8
+git_src_orig_commit="63c0371fa71ae32ba02f05f90658bc40aaa19168" # v259.9
 salsa_repo_commit="0f1a56cf10246d00e6e0602762e59728e727ac4e"   # 259.1-1
 
 git_src_commit ${git_src_orig_commit} https://github.com/systemd/systemd.git
